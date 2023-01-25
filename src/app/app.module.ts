@@ -16,17 +16,13 @@ import { HomeComponent } from './components/home/home.component';
 
 // importar rutas
 import { ROUTES } from './app.routes';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    ConfirmModalComponent
-  ],
+    HomeComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
