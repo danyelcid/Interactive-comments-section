@@ -1,0 +1,178 @@
+:root {
+  --Moderate-blue: #5457b6;
+  --Soft-Red: #ed6468;
+  --Light-grayish-blue: #c3c4ef;
+  --Pale-red: #ffb8bb;
+
+  --Dark-blue: #324152;
+  --Grayish-Blue: #67727e;
+  --Light-gray: #eaecf1;
+  --Very-light-gray: #f5f6fa;
+  --White: #ffffff;
+
+  --fw-regular: 400;
+  --fw-bold: 500;
+  --fw-dark: 700;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Montserrat, sans-serif;
+  background-color: var(--Very-light-gray);
+}
+
+.navbar-brand {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik01MDQuMzMsNDQ5Yy0xLjc3LTYuOC00NC43My0xNjcuNTItMTY0LjIxLTIzMi45MS00NC42NS0yNC40My05Ni4yLTQxLjQ1LTE0Ni01Ny45MUMxMTUsMTMyLjA4LDQwLjI5LDEwNy40MiwyNiw1OS42NWE2LjIyLDYuMjIsMCwwLDAtMTIsLjI0Yy0uOSwzLjUtMjEuNTMsODYuMzgsMTUuNjUsMTM3Ljk0LDE2LjgsMjMuMjksNDIuNjYsMzYuMzMsNzYuODUsMzguNzUsMi44OC4yLDUuNjEuNDIsOC40NC42Myw0LjE1LDE1LjE2LDIyLjE0LDYwLjYzLDg5LjYxLDY2LDEyLjI1LDEsMjQuMTcsMi4yNSwzNS45LDMuNjUsNC45MiwxNC4xNiwyNi44NCw1Ny42LDExNCw3My4wNyw2Mi43OCwxMS4xNCwxMTQsMzEuMTgsMTMxLjIxLDUxLjI1LDQuMzksMTIuNjgsNi41MywyMC42Miw2LjYzLDIxYTYuMiw2LjIsMCwwLDAsNiw0LjY1LDYuNTYsNi41NiwwLDAsMCwxLjU3LS4yQTYuMjMsNi4yMywwLDAsMCw1MDQuMzMsNDQ5Wk0zOS43NCwxOTAuNThDMTYsMTU3LjczLDE4Ljc1LDEwOC41MiwyMi41NSw4MS44M2MyNi4wNyw0MS40Myw5Mi4zNCw2My4zMSwxNjcuNjIsODguMTYsNDkuMzIsMTYuMjksMTAwLjMzLDMzLjEzLDE0NCw1NywzMS40NiwxNy4yMSw1Ny41Myw0MS44LDc4LjgsNjguNDRDMzcyLDI2OS4zOCwzMDUuNTgsMjM4LjIyLDEwNy4zNSwyMjQuMTgsNzcsMjIyLDU0LjI4LDIxMC43MywzOS43NCwxOTAuNThabTg4LjM2LDQ3LjY0YzIwMi4zOCwxNi40MiwyNTQuMzYsNTEuNDYsMjkyLjY0LDc3LjI4LDQuMzYsMi45NSw4LjU4LDUuOCwxMi44NCw4LjUxLDUuMDksNy43Nyw5LjgxLDE1LjU1LDE0LjE4LDIzLjIyLTM4LjM3LTE5Ljc4LTExNS42OS00MS40Mi0yMDEuMTktNTIuMTUtLjE0LDAtLjI5LDAtLjQ0LS4wNi0xMy4zOS0xLjY3LTI2Ljk0LTMuMTMtNDAuNjEtNC4yMkMxNTAuNDksMjg2LjQzLDEzMy4yMSwyNTMuNTMsMTI4LjEsMjM4LjIyWk0zNTYuNjMsMzY3LjY4Yy03MC44My0xMi41Ny05NC41MS00My43OS0xMDItNTkuMTEsMTEwLjI0LDE0Ljg3LDE5Mi43Nyw0Ni4yNywyMDUuNjEsNjIsNi43NSwxMy41NSwxMi4yOSwyNi4yNSwxNi44MSwzNy41QzQ1MS4xLDM5MS40OSw0MDcuOTQsMzc2Ljc4LDM1Ni42MywzNjcuNjhaIi8+PC9zdmc+");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 48px;
+  height: 48px;
+}
+
+.navbar-nav .nav-item:hover {
+  background-color: rgba(180, 190, 203, 0.4);
+}
+
+img.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+}
+
+.comment-block {
+  display: grid;
+  gap: 0.5rem;
+  grid-template:
+    "score user actions" auto
+    "score message message" auto/ 3.5rem 3fr 2fr;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--White);
+  margin-block: 1rem;
+}
+.score {
+  grid-area: score;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  width: 3rem;
+  height: 7rem;
+  border-radius: 0.5rem;
+  background-color: var(--Very-light-gray);
+  color: var(--Moderate-blue);
+  font-weight: bolder;
+}
+
+.user-data {
+  grid-area: user;
+}
+.user-name {
+  font-weight: var(--fw-dark);
+}
+
+.acctions {
+  grid-area: actions;
+  text-align: right;
+}
+.message {
+  grid-area: message;
+}
+.replies {
+  box-sizing: border-box !important;
+  margin-left: 2rem;
+  width: calc(100% - 2rem);
+  padding-left: 2rem;
+  border-left: var(--Grayish-Blue) 1px solid;
+}
+.btn {
+  font-weight: bolder;
+}
+.btn:hover {
+  opacity: 0.75;
+}
+.score .btn,
+.reply.btn {
+  color: var(--Moderate-blue);
+}
+
+.delete.btn {
+  color: var(--Soft-Red);
+}
+
+.btn.send {
+  color: var(--White);
+  background-color: var(--Moderate-blue);
+}
+
+.hr {
+  width: 5rem;
+  margin: auto;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--Grayish-Blue);
+}
+.reply-box {
+  display: none;
+}
+
+textarea {
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  height: 6rem;
+  resize: none;
+  border-radius: 0.75rem;
+  border: var(--Moderate-blue) 1px solid;
+  outline: none;
+}
+textarea:focus {
+  box-shadow: 0 0 2px 1px var(--Moderate-blue);
+}
+
+/* modal  */
+.modal-backdrop.show .mm {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*  helpers  */
+.hidden {
+  display: none;
+}
+
+.user-link {
+  text-decoration: none;
+  color: var(--Moderate-blue);
+  font-weight: var(--fw-dark);
+}
+.user-link:hover {
+  color: var(--Dark-blue);
+}
+
+
+@media (max-width: 576px) {
+  .comment-block {
+    grid-template:
+      "user user" auto
+      " message message" auto
+      "score actions" / auto auto;
+  }
+  .score {
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    width: 7rem;
+  }
+  .replies {
+    margin-left: 0.5rem;
+    width: auto;
+    padding-left: 0.5rem;
+  }
+}

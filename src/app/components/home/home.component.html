@@ -1,0 +1,161 @@
+<div *ngFor="let comment of commentS.commentsList" class="mb-4">
+  <div class="commmet-data">
+    <div class="comment-block col">
+      <div class="score">
+        <button class="score-set btn" (click)="commentS.setScore(comment, 1)">+
+        </button>
+        <span class="text-center">{{comment.score}}</span>
+        <button class="score-set btn" (click)="commentS.setScore(comment, -1)">-
+        </button>
+      </div>
+
+      <div class="user-data">
+        <img src="{{ comment.user['images'].png }}" alt="avatar" class="avatar me-3">
+        <span class="user-name me-3">{{ comment.user.username}} </span>
+        <span class="create-at"><time class="" datetime="{{comment.createdAt}}">
+            {{comment.createdAt | timeago:live}}</time> </span>
+      </div>
+
+      <div class="acctions" *ngIf="commentS.logedUser.username === comment.user.username">
+        <span href="#" class="delete btn" (click)="openModal(template, comment)">
+          <img src="assets/images/icon-delete.svg" alt="">
+          Delete</span>
+        <span href="#" class="btn reply" (click)="toggleEditCommet(comment.id)">
+          <img src="assets/images/icon-edit.svg" alt="">
+          Edit</span>
+      </div>
+      <div class="acctions" *ngIf="commentS.logedUser.username != comment.user.username">
+        <span class="reply btn" (click)="toggleReplyBox(comment.id)"><img src="assets/images/icon-reply.svg" alt="">
+          reply</span>
+      </div>
+
+      <div class="message">
+        <div class="content" id="{{'content' + comment.id}}">
+          <p>
+            {{ comment.content}}
+          </p>
+        </div>
+        <div class="edit hidden" id="{{'edit' + comment.id}}"
+          *ngIf="commentS.logedUser.username === comment.user.username">
+          <textarea name="edit-comment" #editcomment id="" value="{{comment.content}}"></textarea>
+          <div class="mt-2">
+            <span class="btn send float-end" (click)="editContent(editcomment, comment)">Update</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="comment-block col justify-content-between reply-box " id="{{'reply-box' + comment.id }}">
+      <div class="">
+        <img src="{{ commentS.logedUser['images']['png'] }}" alt="" class="avatar">
+      </div>
+      <div class="col px-2">
+        <textarea name="newReply" #replyText id="{{'reply-text' + comment.id}}" class="w-100"></textarea>
+      </div>
+      <div class="">
+        <button class="btn send" (click)="addReply(comment, comment.user, replyText, comment.id)">Reply</button>
+      </div>
+    </div>
+
+
+    <!-- REPLIES  -->
+    <div class="replies" *ngIf="comment.replies != ''">
+
+      <div class="mb-3 col" *ngFor="let reply of comment.replies">
+        <div class="commmet-data">
+          <div class="comment-block col">
+            <div class="score ">
+              <button class="score-set btn " (click)="commentS.setReplyScore( reply, 1)">+</button>
+              <span class="d-block text-center ">{{reply.score}}</span>
+              <button class="score-set btn " (click)="commentS.setReplyScore( reply, -1)">-</button>
+            </div>
+
+            <div class="user-data">
+              <img src="{{ reply.user['images'].png }}" alt="avatar" class="avatar me-3">
+              <span class="user-name me-3">{{ reply.user.username}} </span>
+              <span class="create-at"><time class="bold" datetime="{{ reply.createdAt}} ">
+                  {{reply.createdAt | timeago:live}}</time> </span>
+            </div>
+            <div class="acctions" *ngIf="commentS.logedUser.username === reply.user.username">
+              <span href="#" class="delete btn" (click)="openModal(template, comment, reply)">
+                <img src="assets/images/icon-delete.svg" alt="">
+                Delete</span>
+              <span href="#" class="reply btn" (click)="toggleEditCommet(reply.id)">
+                <img src="assets/images/icon-edit.svg" alt="">
+                Edit
+              </span>
+            </div>
+            <div class="acctions" *ngIf="commentS.logedUser.username != reply.user.username">
+              <span class="reply btn" (click)="toggleReplyBox(reply.id)" data-id="{{ reply.id }}"><img
+                  src="assets/images/icon-reply.svg" alt=""> reply</span>
+            </div>
+
+            <div class="message row">
+              <div class="content" id="{{'content' + reply.id}}">
+                <p>
+                  <a class="user-link" href="#">{{"@" + reply.replyingTo}}</a>
+                  {{" " + reply.content }}
+                </p>
+              </div>
+              <div class="edit hidden" id="{{'edit' + reply.id}}"
+                *ngIf="commentS.logedUser.username === reply.user.username">
+                <textarea name="edit-comment" #editcomment id="" value="{{reply.content}}"></textarea>
+                <div class="mt-2">
+                  <span class="btn send float-end" (click)="editContent(editcomment, comment, reply)">Update</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="comment-block col-12 justify-content-between reply-box" id="{{'reply-box' + reply.id }}">
+            <div class="">
+              <img src="{{ commentS.logedUser['images']['png'] }}" alt="" class="avatar">
+            </div>
+            <div class="col px-2">
+              <textarea name="newReply" #replyText id="{{'reply-text' + reply.id}}" class="w-100"></textarea>
+            </div>
+            <div class="">
+              <button class="btn send"
+                (click)="addReply(comment, reply.user, replyText, reply.id)">Reply</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- END REPLIES    -->
+  </div>
+
+</div>
+
+<div class="hr"></div>
+
+<div class="comment-block col-12 d-flex justify-content-between mt-4">
+  <div class="">
+    <img src="{{ commentS.logedUser['images']['png'] }}" alt="" class="avatar">
+  </div>
+  <div class="col px-2">
+    <textarea name="newComment" #newCommentText id="newCommentText" class="w-100"
+      placeholder="Type a comment..."></textarea>
+  </div>
+  <div class="">
+    <button class="btn send" (click)="addComment(newCommentText)">Send</button>
+  </div>
+</div>
+
+<!--****  modal window  *****-->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Delete Comment</p>
+    <p class="text-start">
+      Are you sure you want to delete this commnent? The <span class="text-danger">DELETE</span> action cannot be undone.
+    </p>
+    <input type="hidden" data-comment="" data-reply="" #input>
+    <div class=" d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary text-uppercase m-1" (click)="decline()">No, Cancel</button>
+      <button type="button" class="btn btn-danger text-uppercase m-1" (click)="confirm(input)">Yes, delete</button>
+    </div>
+  </div>
+</ng-template>
