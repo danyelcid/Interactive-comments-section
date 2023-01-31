@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { TimeagoModule } from 'ngx-timeago';
+import { TimeagoModule } from 'ngx-timeago';
 
 import { HttpClientModule } from '@angular/common/http';
 
