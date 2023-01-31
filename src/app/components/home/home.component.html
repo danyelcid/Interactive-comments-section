@@ -12,15 +12,15 @@
       <div class="user-data">
         <img src="{{ comment.user['images'].png }}" alt="avatar" class="avatar me-3">
         <span class="user-name me-3">{{ comment.user.username}} </span>
-        <span class="create-at"><time class="" datetime="{{comment.createdAt}}">
-            {{comment.createdAt | timeago:live}}</time> </span>
+        <span class="create-at"><span class="" datetime="{{comment.createdAt}}">
+            {{comment.createdAt | timeago:live}}</span> </span>
       </div>
 
       <div class="acctions" *ngIf="commentS.logedUser.username === comment.user.username">
-        <span href="#" class="delete btn" (click)="openModal(template, comment)">
+        <span class="delete btn" (click)="openModal(template, comment)">
           <img src="assets/images/icon-delete.svg" alt="">
           Delete</span>
-        <span href="#" class="btn reply" (click)="toggleEditCommet(comment.id)">
+        <span class="btn reply" (click)="toggleEditCommet(comment.id)">
           <img src="assets/images/icon-edit.svg" alt="">
           Edit</span>
       </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="edit hidden" id="{{'edit' + comment.id}}"
           *ngIf="commentS.logedUser.username === comment.user.username">
-          <textarea name="edit-comment" #editcomment id="" value="{{comment.content}}"></textarea>
+          <textarea name="edit-comment" #editcomment value="{{comment.content}}"></textarea>
           <div class="mt-2">
             <span class="btn send float-end" (click)="editContent(editcomment, comment)">Update</span>
           </div>
@@ -73,14 +73,14 @@
             <div class="user-data">
               <img src="{{ reply.user['images'].png }}" alt="avatar" class="avatar me-3">
               <span class="user-name me-3">{{ reply.user.username}} </span>
-              <span class="create-at"><time class="bold" datetime="{{ reply.createdAt}} ">
-                  {{reply.createdAt | timeago:live}}</time> </span>
+              <span class="create-at"><span class="bold" datetime="{{ reply.createdAt}} ">
+                  {{reply.createdAt | timeago:live}}</span> </span>
             </div>
             <div class="acctions" *ngIf="commentS.logedUser.username === reply.user.username">
-              <span href="#" class="delete btn" (click)="openModal(template, comment, reply)">
+              <span class="delete btn" (click)="openModal(template, comment, reply)">
                 <img src="assets/images/icon-delete.svg" alt="">
                 Delete</span>
-              <span href="#" class="reply btn" (click)="toggleEditCommet(reply.id)">
+              <span class="reply btn" (click)="toggleEditCommet(reply.id)">
                 <img src="assets/images/icon-edit.svg" alt="">
                 Edit
               </span>
@@ -99,7 +99,7 @@
               </div>
               <div class="edit hidden" id="{{'edit' + reply.id}}"
                 *ngIf="commentS.logedUser.username === reply.user.username">
-                <textarea name="edit-comment" #editcomment id="" value="{{reply.content}}"></textarea>
+                <textarea name="edit-comment" #editcomment value="{{reply.content}}"></textarea>
                 <div class="mt-2">
                   <span class="btn send float-end" (click)="editContent(editcomment, comment, reply)">Update</span>
                 </div>
